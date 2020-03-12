@@ -8,13 +8,13 @@ class AuthenticationRouter {
   async register(request, response) {
     const { email, password } = request.body
     if (this.isInvalid(email) || this.isInvalid(password)) {
-      return response.status(400).json('Email or password not informed.')
+      return response.status(400).json({ message: 'Email or password not informed.' })
     }
 
     const isEmailAvailable = await this.authService.isEmailAvailable(email)
 
     if (!isEmailAvailable) {
-      return response.status(400).json('Email already in use.')
+      return response.status(400).json({ message: 'Email already in use.' })
     }
 
     const user = await this.authService.register(email, password)
@@ -24,7 +24,7 @@ class AuthenticationRouter {
   async login(request, response) {
     const { email, password } = request.body
     if (this.isInvalid(email) || this.isInvalid(password)) {
-      return response.status(400).json('Email or password not informed.')
+      return response.status(400).json({ message: 'Email or password not informed.' })
     }
 
     try {
