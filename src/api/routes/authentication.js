@@ -7,7 +7,7 @@ class AuthenticationRouter {
 
   async register(request, response) {
     const { email, password } = request.body
-    if (AuthenticationRouter.isInvalid(email) || AuthenticationRouter.isInvalid(password)) {
+    if (this.isInvalid(email) || this.isInvalid(password)) {
       return response.status(400).json('Email or password not informed.')
     }
 
