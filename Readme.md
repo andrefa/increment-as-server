@@ -7,10 +7,11 @@
 Heroku - https://increment-as-server.herokuapp.com/
 
 ### Time spent
-6 hours
+6 hours (back)
+3 hours (front)
 
 ### Assumptions made
-Assumed the counter was generated per user.
+I assumed the counter was generated per user.
 
 ### Shortcuts/Compromises made
 There are some repeated code, some functions that could be moved to utility files, some syntax sugars could be applied, removed some lint checks that I would like to solve. Not validating if the email is valid.
@@ -18,7 +19,6 @@ There are some repeated code, some functions that could be moved to utility file
 ### Stretch goals attempted
 - Deploying it to Heroku OK
 - Build UI OK
-- OAuth sign up
 
 ### Instructions to run assignment locally
 ```
