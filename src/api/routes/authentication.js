@@ -8,13 +8,13 @@ class AuthenticationRouter {
   async register(request, response) {
     const { email, password } = request.body
     if (AuthenticationRouter.isInvalid(email) || AuthenticationRouter.isInvalid(password)) {
-      return response.json('Email or password not informed.').status(400)
+      return response.status(400).json('Email or password not informed.')
     }
 
     const isEmailAvailable = await this.authService.isEmailAvailable(email)
 
     if (!isEmailAvailable) {
-      return response.json('Email already in use.').status(400)
+      return response.status(400).json('Email already in use.')
     }
 
     const user = await this.authService.register(email, password)
@@ -24,7 +24,7 @@ class AuthenticationRouter {
   async login(request, response) {
     const { email, password } = request.body
     if (this.isInvalid(email) || this.isInvalid(password)) {
-      return response.json('Email or password not informed.').status(400)
+      return response.status(400).json('Email or password not informed.')
     }
 
     try {
@@ -32,7 +32,7 @@ class AuthenticationRouter {
       return this.respondToken(response, user.id, user.email)
     } catch (error) {
       console.error(error)
-      return response.json({ message: 'Invalid email or password.' }).status(401)
+      return response.status(401).json({ message: 'Invalid email or password.' })
     }
   }
 
@@ -47,7 +47,7 @@ class AuthenticationRouter {
 
   respondToken(response, id, email) {
     const token = this.authService.generateToken(id, email)
-    response.json(token).status(200)
+    response.status(200).json(token)
   }
 
   isInvalid(value) {

@@ -9,14 +9,14 @@ class CounterRouter {
     const { id: userId } = request.user
     const amount = await this.counterService.current(userId)
 
-    response.json({ counter: amount }).status(200)
+    response.status(200).json({ counter: amount })
   }
 
   async next(request, response) {
     const { id: userId } = request.user
     const amount = await this.counterService.next(userId)
 
-    response.json({ counter: amount }).status(200)
+    response.status(200).json({ counter: amount })
   }
 
   async reset(request, response) {
@@ -24,12 +24,12 @@ class CounterRouter {
     const { current } = request.body
 
     if (this.isInvalid(current)) {
-      return response.json({ message: 'Current value must e a number.' }).status(400)
+      return response.status(400).json({ message: 'Current value must e a number.' })
     }
 
     const amount = await this.counterService.reset(userId, current)
 
-    return response.json({ counter: amount }).status(200)
+    return response.status(200).json({ counter: amount })
   }
 
   handler() {

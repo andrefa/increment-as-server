@@ -18,7 +18,7 @@ class ParseRequestUserMiddleware {
       next()
     } catch (error) {
       console.error(error)
-      res.json({ message: 'Invalid authorization token provided.' }).status(401)
+      res.status(401).json({ message: 'Invalid authorization token provided.' })
     }
   }
 
