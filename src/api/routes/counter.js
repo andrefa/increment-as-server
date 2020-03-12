@@ -27,6 +27,10 @@ class CounterRouter {
       return response.status(400).json({ message: 'Current value must be a number.' })
     }
 
+    if (this.isOutsideLimit(current)) {
+      return response.status(400).json({ message: 'Current value is over the valid limit (0 ~ 2147483647).' })
+    }
+
     const amount = await this.counterService.reset(userId, current)
 
     return response.status(200).json({ counter: amount })
@@ -44,6 +48,10 @@ class CounterRouter {
 
   isInvalid(value) {
     return value == null || value.trim() === '' || isNaN(value)
+  }
+
+  isOutsideLimit(value) {
+    return value < 0 || value > 2147483647
   }
 }
 

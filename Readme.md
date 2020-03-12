@@ -17,7 +17,7 @@ There are some repeated code, some functions that could be moved to utility file
 
 ### Stretch goals attempted
 - Deploying it to Heroku OK
-- Build UI
+- Build UI OK
 - OAuth sign up
 
 ### Instructions to run assignment locally
