@@ -23,9 +23,9 @@ There are some repeated code, some functions that could be moved to utility file
 ### Instructions to run assignment locally
 ```
 git clone https://github.com/andrefa/increment-as-server.git
-npm i
+yarn
 mv .env.template .env #fill with respective configurations
-npm start
+yarn start
 ```
 
 ### What did you not include in your solution that you want us to know about?
