@@ -13,10 +13,10 @@ Heroku - https://increment-as-server.herokuapp.com/
 Assumed the counter was generated per user.
 
 ### Shortcuts/Compromises made
-There are some repeated code, some functions that could be moved to utility files, some syntax sugars could be applied, removed some lint checks that I would like to solve
+There are some repeated code, some functions that could be moved to utility files, some syntax sugars could be applied, removed some lint checks that I would like to solve. Not validating if the email is valid.
 
 ### Stretch goals attempted
-- Deploying it to Heroku 
+- Deploying it to Heroku OK
 - Build UI
 - OAuth sign up
 

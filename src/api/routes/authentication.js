@@ -47,7 +47,7 @@ class AuthenticationRouter {
 
   respondToken(response, id, email) {
     const token = this.authService.generateToken(id, email)
-    response.status(200).json(token)
+    response.status(200).json({ token })
   }
 
   isInvalid(value) {
