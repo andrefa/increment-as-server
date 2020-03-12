@@ -4,7 +4,9 @@
 12/March/2020
 
 ### Location of deployed application
-Heroku - https://increment-as-server.herokuapp.com/
+Heroku
+https://increment-as-server.herokuapp.com/ (backend)
+https://increment-as-view.herokuapp.com/ (frontend)
 
 ### Time spent
 6 hours (back)
@@ -33,6 +35,40 @@ Tried to include Google OAuth, haven't found one straghtforward way to (Google d
 
 ### Other information about your submission that you feel it's important that we know if applicable.
 I've built it to be persistent. To accomplish it, I'm using a Postgres database, currently hosted on Heroku. Also I've tried to build one consistent architecture. Added my own dependency injector, manually, to make it easier to test (tests not included).
+
+#### Backend
+Hosted on - https://increment-as-server.herokuapp.com/
+Source code - https://github.com/andrefa/increment-as-server
+
+##### Endpoints
+```
+POST /auth/login
+	params
+		email
+		password
+	returns
+		authentication token
+POST /auth/register
+	params
+		email
+		password
+	returns
+		authentication token
+GET /counter/current
+	returns
+		current counter
+GET /counter/next
+	returns
+		current counter + 1
+PUT /counter/current
+	params
+		current
+	returns
+		current counter
+```
+#### Frontend
+Hosted on - https://increment-as-view.herokuapp.com/
+Source code - https://github.com/andrefa/increment-as-view
 
 ### Your feedback on this technical challenge
 A good chalenge. I think it would be easier without the authentication part but probably it would be too simple for this assignment.
