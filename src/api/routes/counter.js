@@ -24,7 +24,7 @@ class CounterRouter {
     const { current } = request.body
 
     if (this.isInvalid(current)) {
-      return response.status(400).json({ message: 'Current value must e a number.' })
+      return response.status(400).json({ message: 'Current value must be a number.' })
     }
 
     const amount = await this.counterService.reset(userId, current)
