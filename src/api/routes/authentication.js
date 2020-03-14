@@ -11,13 +11,19 @@ class AuthenticationRouter {
       return response.status(400).json({ message: 'Email or password not informed.' })
     }
 
-    const isEmailAvailable = await this.authService.isEmailAvailable(email)
+    if (this.isInvalidEmail(email)) {
+      return response.status(400).json({ message: 'Email informed is not valid.' })
+    }
+
+    const loweredEmail = email.toLowerCase()
+
+    const isEmailAvailable = await this.authService.isEmailAvailable(loweredEmail)
 
     if (!isEmailAvailable) {
       return response.status(400).json({ message: 'Email already in use.' })
     }
 
-    const user = await this.authService.register(email, password)
+    const user = await this.authService.register(loweredEmail, password)
     return this.respondToken(response, user.id, user.email)
   }
 
@@ -27,8 +33,10 @@ class AuthenticationRouter {
       return response.status(400).json({ message: 'Email or password not informed.' })
     }
 
+    const loweredEmail = email.toLowerCase()
+
     try {
-      const user = await this.authService.login(email, password)
+      const user = await this.authService.login(loweredEmail, password)
       return this.respondToken(response, user.id, user.email)
     } catch (error) {
       console.error(error)
@@ -52,6 +60,10 @@ class AuthenticationRouter {
 
   isInvalid(value) {
     return value == null || value.trim() === ''
+  }
+
+  isInvalidEmail(value) {
+    return !/^.+@\w{2,}\.\w{2,}$/.test(value)
   }
 }
 
